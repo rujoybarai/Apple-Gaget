@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+*{
+    font-family: "inter", sans-serif;
+    box-sizing: border-box;
+}
+
+#slider{
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+
+}
+
+#slider::-webkit-scrollbar{
+    display: none;
+}
