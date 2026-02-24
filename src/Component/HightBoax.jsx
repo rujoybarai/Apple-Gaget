@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 
 import { ChevronRight } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import SlideBox from './SlideBox';
 
 
-export default function HightBoax({t1,t2}) {
+
+export default function HightBoax({t1,t2,Product}) {
      const scroolRef = useRef(null);
       const prevSlide =()=>{
    scroolRef.current?.scrollBy({
@@ -18,6 +19,14 @@ export default function HightBoax({t1,t2}) {
       left:300,behavior:'smooth'
     })
   }
+
+
+
+
+
+
+
+
   return (
    <div className="container mx-auto  w-[90%] lg:w-full mt-6 flex flex-col gap-5  justify-center items-center">
 
@@ -49,7 +58,7 @@ export default function HightBoax({t1,t2}) {
        
        {/* trend product cards */}
 
-       <SlideBox scroll={scroolRef}/>
+       <SlideBox scroll={scroolRef}  Product={Product}/>
 
       </div>
   )

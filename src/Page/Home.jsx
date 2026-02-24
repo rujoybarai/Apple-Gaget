@@ -9,6 +9,8 @@ import { RefreshCcw } from "lucide-react";
 import { Wallet } from "lucide-react";
 import { Wrench } from "lucide-react";
 import HightBoax from "../Component/HightBoax";
+import { useContext } from "react";
+import { AppContext } from "../Context/AppContext";
 
 
 
@@ -40,7 +42,11 @@ export default function Home() {
 
 
 
+const{Allproduct}=useContext(AppContext);
 
+ const TrendingProduct = Allproduct.filter(prev => prev.Type === "trend");
+ const FeaturedProduct = Allproduct.filter(prev => prev.Type === "Featured");
+  const ArrivalProduct = Allproduct.filter(prev => prev.Type === "Arrival");
 
 
   return (
@@ -84,10 +90,10 @@ export default function Home() {
 
       {/* part 3 */}
 
-      <HightBoax t1={"New"} t2={"Trends"} />
+      <HightBoax t1={"New"} t2={"Trends"} Product={TrendingProduct} />
 
       {/* part 4 */}
-     <HightBoax t1={"Featured"} t2={"Products"}/>
+     <HightBoax t1={"Featured"} t2={"Products"} Product={FeaturedProduct}/>
 
       {/* part 5 */}
       <div className="container mx-auto w-[80%] lg:w-full lg:h-72 mt-10 mb-10">
@@ -97,7 +103,7 @@ export default function Home() {
 
       {/* part 6 */}
 
-      <HightBoax t1={"New"} t2={"Arrival"}/>
+      <HightBoax t1={"New"} t2={"Arrival"} Product={ArrivalProduct}/>
      
 
 
