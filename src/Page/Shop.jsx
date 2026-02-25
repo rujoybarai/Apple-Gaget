@@ -40,7 +40,7 @@ export default function Shop() {
         <div className='flex items-center justify-evenly gap-0.5 w-full mt-1 mb-3'>
             <input type="text" placeholder='0' className='w-[30%] border-2 border-gray-400 rounded-md px-1.5 outline-none ' ref={initialPrice} />
             <input type="text" placeholder='100000......' className='w-[30%] border-2  border-gray-400  rounded-md px-1.5 outline-none' ref={targetPrice}/>
-            <motion.div className='w-[15%] bg-blue-400 rounded-sm flex items-center justify-center cursor-pointer' onClick={ClickRange} whileTap={{opacity:0.7,backgroundColor:"lightgreen"}}><Play strokeWidth={1.25} /></motion.div>
+            <motion.div className='w-[15%] bg-blue-400 rounded-sm flex items-center justify-center cursor-pointer' onClick={ClickRange} whileTap={{opacity:0.7,backgroundColor:"lightgreen"}}><Play strokeWidth={1.25} color='white' /></motion.div>
         </div>
         <hr className='border-gray-400' />
         <div className='flex  flex-wrap lg:flex-col items-start justify-center gap-0.5 w-full mt-1 mb-3'>
