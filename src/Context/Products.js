@@ -105,13 +105,13 @@ export const Products =[
   {
     "title": "OnePlus Buds 4 ANC TWS Earbuds",
     "Availability": "in stock",
-    "Code": "AGL29718",
+    "Code": "AGL29719",
     "price": 7850,
     "Bprice": 9500,
     "storage": "",
     "discount": 1650,
     "img": ["./Product/img8.webp","./Product/img81.webp"],
-    "catagory": "headphone",
+    catagory: "headphone",
     "subCatagory": "Oneplus",
     "Type": "Featured"
   },
@@ -173,7 +173,7 @@ export const Products =[
   {
     "title": "Anker Soundcore R60i NC TWS Earbuds",
     "Availability": "in stock",
-    "Code": "1-1",
+    "Code": "Af9",
     "price": 3500,
     "Bprice": 4200,
     "storage": [],

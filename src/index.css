@@ -16,3 +16,17 @@
 #slider::-webkit-scrollbar{
     display: none;
 }
+
+#scroll{
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+}
+#scroll::-webkit-scrollbar{
+    display: none;
+}
+
+#nav-link li a{
+    text-decoration: none;
+}

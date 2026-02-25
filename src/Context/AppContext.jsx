@@ -14,7 +14,7 @@ export default function AppStore ({children}){
 
   return(
 
-    <AppContext.Provider value={{Allproduct}}>
+    <AppContext.Provider value={{Allproduct,setALLproduct}}>
     {children}
     </AppContext.Provider>
   )  
