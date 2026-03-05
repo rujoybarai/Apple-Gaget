@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../Context/AppContext'
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 
 export default function Card({item}) {
@@ -13,7 +14,10 @@ export default function Card({item}) {
 
   }
   return (
-    <div id='card' className=" h-70 w-64 lg:h-80 lg:w-70 border-2  border-gray-200 shadow-md  rounded-2xl flex shrink-0 flex-col justify-baseline items-start  p-2 pb-4 m-5 cursor-pointer"onClick={handClick} >
+    <motion.div id='card' className=" h-70 w-64 lg:h-80 lg:w-70 border-2  border-gray-200 shadow-md  rounded-2xl flex shrink-0 flex-col justify-baseline items-start  p-2 pb-4 m-5 cursor-pointer"onClick={handClick}
+    whileHover={{scale:1.1,boxShadow:" 2px 2px 10px gray",transition:{duration:0.2}}}
+
+    >
       <div className='w-full h-[70%]  '>
       <img src={`${item.img[0]}`} alt=""  className='bg-cover w-full h-full'/>
 
@@ -26,6 +30,6 @@ export default function Card({item}) {
       </div>
 
   
-    </div>
+    </motion.div>
   )
 }

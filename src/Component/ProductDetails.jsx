@@ -3,13 +3,55 @@ import { motion } from 'framer-motion'
 import { useContext } from 'react'
 import { AppContext } from '../Context/AppContext'
 import { Link } from 'react-router-dom';
+import { toast, Bounce  } from 'react-toastify';
 
 export default function ProductDetails() {
-    const {ProductDetail}=useContext(AppContext);
+    const {ProductDetail,setCartData,setPrice,CartData}=useContext(AppContext);
+    const [count,setCount]=useState(1);
 
     const [ primaryImg,setprimaryImg]=useState(0);
+    const [ Selectstorage, setSelectstorage]=useState(0);
     const imgClick=(id)=>{
         setprimaryImg(id);
+    }
+
+    const notify =()=>{
+              toast.success('Added this product', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+});
+    }
+
+    const clickShop =(product)=>{
+      let id=product.id;
+      let title = product.title;
+      let price =product.price;
+      let code =product.Code;
+      let img =product.img[primaryImg] || null;
+      let qounty =count;
+      let storage= ProductDetail.storage !=null? ProductDetail.storage[Selectstorage] : null ;
+       
+      if(Array.isArray(CartData) && CartData.some(item=>item.id == id)){
+       setCartData(prev =>
+        prev.map(item => item.id == id? { ...item, qounty: item.qounty + qounty }: item));
+         setPrice(prev => prev+=price*qounty);
+         notify();
+      }else{
+       
+         setCartData(prev => [...prev,{id,title,price,code,img,qounty,storage}]);
+         setPrice(prev => prev+=price*qounty);
+         notify();
+
+      }
+       
+    
     }
   return (
     <div className='container h-[1000px] mx-auto lg:h-lvh flex flex-wrap items-center justify-evenly mt-5 mb-5'> 
@@ -22,7 +64,10 @@ export default function ProductDetails() {
 
           {ProductDetail && ProductDetail.img?.map((item,i)=>(
          
-          <div className='w-[30%] h-full border-2  border-gray-400  rounded-md cursor-pointer'  key={i} onClick={()=>imgClick(i)} >
+          <div className='w-[30%] h-full border-2  border-gray-400  rounded-md cursor-pointer'  key={i} onClick={()=>imgClick(i)}
+          
+          style={{border:`${primaryImg==i?" 2px solid #87CEEB":" "}`}}
+          >
             <img src={`${item}`} alt="" className='w-full h-full object-cover rounded-md'  />
            </div>
 
@@ -50,11 +95,13 @@ export default function ProductDetails() {
          <h3 className='text-[12px] lg:text-[16px] font-bold px-2  border-r-2  border-l-2 border-gray-400'>Availability: <span className='font-normal text-gray-500'>{ProductDetail.Availability}</span></h3>
            <h3 className='text-[12px] lg:text-[16px] font-bold px-2'>Code:<span className='font-normal text-gray-500'>{ProductDetail.Code}</span></h3>
          </div>
-          <div class=" border-2 mt-3 h-20 w-60 lg:h-26 lg:w-90 border-gray-400 rounded-xl ">
-         <h2 class=" text-sm lg:text-md font-bold text-gray-700 ml-4 mt-3">Storage:</h2>
-         <div class="flex  items-center gap-1 mt-2 w-full">
+          <div className=" border-2 mt-3 h-20 w-60 lg:h-26 lg:w-90 border-gray-400 rounded-xl ">
+         <h2 className=" text-sm lg:text-md font-bold text-gray-700 ml-4 mt-3">Storage:</h2>
+         <div className="flex  items-center gap-1 mt-2 w-full">
         {ProductDetail && ProductDetail.storage?.map((item,i)=>(
-           <button class="px-2 py-1 ml-2 border rounded-full text-gray-400 text-[12px] lg:text-sm" key={i}>
+           <button className="px-2 py-1 ml-2 border rounded-full text-gray-400 text-[12px] lg:text-sm cursor-pointer" key={i} onClick={()=>setSelectstorage(i)}
+           style={{border:`${Selectstorage==i?" 2px solid #87CEEB":" "}`}}
+           >
           {item}
         </button>
 
@@ -64,20 +111,20 @@ export default function ProductDetails() {
       </div>
     </div>
 
-       <div class="mt-5 h-16 lg:h-26 ">
-      <h2 class="font-semibold text-gray-700 mb-2">Select Quantity:</h2>
-      <div class="flex items-center bg-gray-100 w-fit rounded-full px-2 py-1">
-        <button class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow text-lg font-bold">
+       <div className="mt-5 h-16 lg:h-26 ">
+      <h2 className="font-semibold text-gray-700 mb-2">Select Quantity:</h2>
+      <div className="flex items-center bg-gray-100 w-fit rounded-full px-2 py-1">
+        <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow text-lg font-bold" onClick={()=>setCount(prev => prev > 1 ? prev-1:1)}>
           −
         </button>
-        <span class="px-6 text-lg font-medium">1</span>
-        <button class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow text-lg font-bold">
+        <span className="px-6 text-lg font-medium">{count}</span>
+        <button className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow text-lg font-bold" onClick={()=>setCount(prev => prev+1)}>
           +
         </button>
       </div>
     </div>
 
-     <motion.button class=" w-30 mt-8 lg:w-30 bg-orange-500 cursor-pointer text-white font-semibold py-2 rounded-full shadow-lg " whileHover={{scale:1.05}} whileTap={{scale:0.9,transition:{duration:0.5}}}>
+     <motion.button className=" w-30 mt-8 lg:w-30 bg-orange-500 cursor-pointer text-white font-semibold py-2 rounded-full shadow-lg " whileHover={{scale:1.05}} whileTap={{scale:0.9,transition:{duration:0.5}}} onClick={()=>clickShop(ProductDetail)}>
       Shop Now
     </motion.button>
 

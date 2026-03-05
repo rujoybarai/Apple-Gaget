@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import {  ShoppingCart } from "lucide-react";
 import { CircleUser } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../Context/AppContext";
 
 export default function Navber() {
+  const {clickCart,CartData}=useContext(AppContext);
   return (
     <div className="lg:w-full lg:min-h-20 border-2 bg-black flex items-center flex-wrap justify-center lg:justify-evenly ">
       <div className="lg:w-1/4 lg:h-16 w-full h-12 text-amber-50 font-bold lg:text-3xl text-2xl text-center mt-3 cursor-pointer">
@@ -21,11 +23,11 @@ export default function Navber() {
           <li className="cursor-pointer "><Link to={"/shop"}>Shop</Link></li>
           <li className="cursor-pointer "><Link to={"/preorder"}>Pre-Order</Link></li>
           <li className="cursor-pointer "><Link to={"/offers"}>Offers</Link></li>
-          <li className="flex gap-0.5 items-center relative cursor-pointer ">
+          <li className="flex gap-0.5 items-center relative cursor-pointer " onClick={clickCart}>
             <ShoppingCart size={20} strokeWidth={1.5} />
             Cart{" "}
             <span className=" text-rose-600 rounded-full flex items-center justify-center absolute -top-3 right-9 ">
-              0
+              {CartData.length}
             </span>
           </li>
           <li className="flex gap-0.5 cursor-pointer ">

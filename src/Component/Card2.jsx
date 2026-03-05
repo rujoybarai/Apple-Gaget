@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AppContext } from '../Context/AppContext';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function Card2({item}) {
   const {setProductDetail}=useContext(AppContext);
    const navigate =useNavigate();
@@ -15,7 +16,9 @@ export default function Card2({item}) {
   }
 
   return (
-    <div id='card' className=" h-66 w-40 lg:h-95 lg:w-70 border-2  border-gray-200 shadow-md  rounded-2xl flex shrink-0 flex-col justify-baseline items-start  p-2 pb-4 m-5 cursor-pointer snap-y" >
+    <motion.div id='card' className=" h-66 w-40 lg:h-95 lg:w-70 border-2  border-gray-200 shadow-md  rounded-2xl flex shrink-0 flex-col justify-baseline items-start  p-2 pb-4 m-5 cursor-pointer snap-y"
+     whileHover={{scale:1.1,boxShadow:" 2px 2px 10px gray",transition:{duration:0.2}}}
+    >
       <div className='w-full lg:h-56 h-36  '>
       <img src={`${item.img[0]}`} alt=""  className='bg-cover w-full h-full'/>
 
@@ -28,6 +31,6 @@ export default function Card2({item}) {
       </div>
 
       <motion.button className=" w-20 lg:w-40 mx-auto mt-2 lg:mt-4  py-1 rounded-xl text-[13px] lg:text-md font-normal border-2 border-gray-400 cursor-pointer" whileHover={{backgroundColor:"#F27F20",color:"white",borderColor:"white"}} whileTap={{opacity:0.7,scale:0.9,transition:{duration:0.5}}} onClick={handClick}>Shop Now</motion.button>
-    </div>
+    </motion.div>
   )
 }
