@@ -7,7 +7,7 @@ export const AppContext = createContext(null);
 
 //.......
 
-export default function AppStore ({children,setCart}){
+export default function AppStore ({children,setCart,setLoginPage,setRegisterPage}){
 
   const saveProductDetail = JSON.parse(localStorage.getItem("ProductDetail")) ||null;
   const storeCartData = JSON.parse(localStorage.getItem("CartData")) ;
@@ -32,8 +32,7 @@ export default function AppStore ({children,setCart}){
     setCart(false);
   }
 
-  console.log(CartData);
-  
+
   
 
   useEffect(()=>{
@@ -43,9 +42,31 @@ export default function AppStore ({children,setCart}){
   },[ProductDetail,CartData,totalPrice]);
 
 
+  const clickLogin =()=>{
+    setRegisterPage(false);
+    setLoginPage(true);
+  }
+
+  const deleteLogin =()=>{
+    setLoginPage(false);
+  }
+
+  const clickRegister =()=>{
+
+    setLoginPage(false);
+    setRegisterPage(true);
+  }
+
+  const deleteRegister =()=>{
+    setRegisterPage(false);
+  }
+
+
+
+
   return(
 
-    <AppContext.Provider value={{Allproduct,setALLproduct,setProductDetail,ProductDetail,clickCart,deleteCart,setCartData,CartData,totalPrice,setPrice}}>
+    <AppContext.Provider value={{Allproduct,setALLproduct,setProductDetail,ProductDetail,clickCart,deleteCart,setCartData,CartData,totalPrice,setPrice,clickLogin,deleteLogin,clickRegister,deleteRegister}}>
     <div className="relative">
       {children}
     </div>

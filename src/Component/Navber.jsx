@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 
 export default function Navber() {
-  const {clickCart,CartData}=useContext(AppContext);
+  const {clickCart,CartData,clickLogin}=useContext(AppContext);
   return (
     <div className="lg:w-full lg:min-h-20 border-2 bg-black flex items-center flex-wrap justify-center lg:justify-evenly ">
       <div className="lg:w-1/4 lg:h-16 w-full h-12 text-amber-50 font-bold lg:text-3xl text-2xl text-center mt-3 cursor-pointer">
@@ -30,7 +30,7 @@ export default function Navber() {
               {CartData.length}
             </span>
           </li>
-          <li className="flex gap-0.5 cursor-pointer ">
+          <li className="flex gap-0.5 cursor-pointer " onClick={clickLogin}>
             <CircleUser size={30} strokeWidth={1.5} />
           </li>
         </ul>
