@@ -9,6 +9,8 @@ import Shop from './Page/Shop.jsx'
 import ProductDetails from './Component/ProductDetails.jsx'
 import Offers from './Page/Offers.jsx'
 import PreOrder from './Page/PreOrder.jsx'
+import { path } from 'framer-motion/client'
+import Checkout from './Page/Checkout.jsx'
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,9 @@ const router = createBrowserRouter([
  },
  {
   path:"/preorder",element:<PreOrder/>,
+ },
+ {
+  path:"/checkout", element:<Checkout/>,
  }
 
   ],

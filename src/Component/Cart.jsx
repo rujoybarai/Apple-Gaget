@@ -1,15 +1,24 @@
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-const {deleteCart,CartData,totalPrice,setCartData,setPrice}=useContext(AppContext);
+const {deleteCart,CartData,totalPrice,setCartData,setPrice,setCart}=useContext(AppContext);
 
  const deleteItem =(item)=>{
   setCartData(prev => prev.filter(product=>product.id !== item.id ));
   setPrice(prev => prev>0 ? prev -=item.price *item.qounty : 0);
 
 
+ }
+
+ const Navigate = useNavigate();
+
+ const checkOutClick =()=>{
+    setCart(false);
+   Navigate("/checkout");
+   
  }
 
   return (
@@ -25,9 +34,9 @@ const {deleteCart,CartData,totalPrice,setCartData,setPrice}=useContext(AppContex
 
                   <div className="w-full h-20  rounded-2xl flex justify-evenly items-center" key={i}>
               <div className="w-20 h-full  rounded-lg"><img src={`${item.img}`} alt=""  className="rounded-lg h-full w-full object-cover"/> </div>
-              <h2 className="font-semibold">{item.title.slice(0,15)}</h2>
-              <p>৳{item.price}</p>
-              <p className="font-bold">{item.qounty}x</p>
+              <h2 className=" text-[13px] lg:text-[18px] font-normal lg:font-semibold">{item.title.slice(0,15)}</h2>
+              <p className="text-[14px] lg:text-[16px] ">৳{item.price}</p>
+              <p className="font-normal lg:font-bold">{item.qounty}x</p>
               <p className="font-bold text-2xl text-red-700 cursor-pointer" onClick={()=> deleteItem(item)} >X</p>
 
 
@@ -43,7 +52,7 @@ const {deleteCart,CartData,totalPrice,setCartData,setPrice}=useContext(AppContex
 
          <div className="w-[70%] mx-auto h-20  rounded-2xl flex justify-around items-center">
             <h1 className="font-bold text-xl ">Total: <span className="font-medium text-lg">{totalPrice}</span> </h1>
-            <motion.button className=" bg-orange-500 text-white px-2 py-1 rounded-lg cursor-pointer " whileTap={{scale:0.9, opacity:0.7, transition:{duration:0.5}}}>Check out</motion.button>
+            <motion.button className=" bg-orange-500 text-white px-2 py-1 rounded-lg cursor-pointer " whileTap={{scale:0.9, opacity:0.7, transition:{duration:0.5}}} onClick={checkOutClick}>Check out</motion.button>
          </div>
 
 

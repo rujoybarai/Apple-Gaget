@@ -7,7 +7,7 @@ export default function Register() {
   return (
     <div className='absolute inset-0 z-40 flex items-start justify-center bg-black/50'>
 
-        <div className='w-lg h-[70vh] bg-white z-50 mt-30 rounded-2xl flex flex-col items-center justify-start relative'>
+        <div className='w-[90%] h-fit py-5 lg:w-lg lg:h-[70vh] bg-white z-50 mt-30 rounded-2xl flex flex-col items-center justify-start relative'>
          <p className='absolute right-7 top-3 text-4xl font-normal text-gray-500 cursor-pointer'  onClick={deleteRegister}>X</p>
          <h2 className='text-center text-3xl font-bold mt-5 mb-2 '>Register</h2>
 

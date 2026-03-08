@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <div className='absolute inset-0 z-40 flex items-start justify-center bg-black/50'>
 
-        <div className='w-lg h-[50vh] bg-white z-50 mt-52 rounded-2xl flex flex-col items-center justify-start relative'>
+        <div className='w-[90%] h-fit lg:w-lg lg:h-[50vh] bg-white z-50 mt-52 rounded-2xl flex flex-col items-center justify-start relative py-5'>
          <p className='absolute right-7 top-3 text-4xl font-normal text-gray-500 cursor-pointer'  onClick={deleteLogin}>X</p>
          <h2 className='text-center text-3xl font-bold mt-5 mb-2 '>Login</h2>
 

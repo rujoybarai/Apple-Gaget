@@ -66,7 +66,7 @@ export default function AppStore ({children,setCart,setLoginPage,setRegisterPage
 
   return(
 
-    <AppContext.Provider value={{Allproduct,setALLproduct,setProductDetail,ProductDetail,clickCart,deleteCart,setCartData,CartData,totalPrice,setPrice,clickLogin,deleteLogin,clickRegister,deleteRegister}}>
+    <AppContext.Provider value={{Allproduct,setALLproduct,setProductDetail,ProductDetail,clickCart,deleteCart,setCartData,setCart,CartData,totalPrice,setPrice,clickLogin,deleteLogin,clickRegister,deleteRegister}}>
     <div className="relative">
       {children}
     </div>
