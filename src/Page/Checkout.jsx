@@ -57,7 +57,7 @@ export default function Checkout() {
    
    
   return (
-    <div className=' container mx-auto w-[90%] min-h-[40vh] lg:w-full lg:h-lvh grid grid-rows-5 lg:grid-cols-4 py-10 gap-0 '>
+    <div className=' container mx-auto w-[90%] min-h-[40vh] lg:w-full lg:h-lvh grid grid-rows-5 lg:grid-cols-4 py-10 gap-5 '>
 
         <div className=' row-span-3 max-h-fit lg:row-span-5 lg:col-span-3 flex flex-col justify-start items-center '>
      
